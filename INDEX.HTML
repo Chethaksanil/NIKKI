@@ -1,0 +1,158 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Best Friend 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ffd6e0, #cce7ff);
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.active {
+  display: flex;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+  max-width: 400px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background: #ff4d6d;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* YES button funny */
+#yesBtn {
+  position: absolute;
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: red;
+  top: 0;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>ARE YOU MAD ON ME?? 😡</h1>
+  <button id="yesBtn">YES 😤</button>
+  <button onclick="nextPage(2)">NO 💚</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>🥺 Sorryyyy</h1>
+  <p>Sorry for being rude sometimes…</p>
+  <p>But you know I love irritating you 😌</p>
+  <p>You deserve it though 😂💖</p>
+  <button onclick="nextPage(3)">Okay forgive me 🙄</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h1>📚 ALL THE BEST!!!</h1>
+  <p>Future Doctor loading… 👨‍⚕️🔥</p>
+  <p>Make me proud okay 😤</p>
+  <p>And treat me well 💸😌</p>
+  <button onclick="nextPage(4)">Next 😏</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <h1>💖 Final Message</h1>
+  <p>
+  నువ్వు ఖచ్చితంగా సక్సెస్ అవుతావు 💖 <br><br>
+  నీ మీద నాకు పూర్తి నమ్మకం ఉంది 🫶 <br><br>
+  నీ డాక్టర్ అయ్యే రోజు నేను ఫస్ట్ సెలబ్రేట్ చేస్తా 😌✨ <br><br>
+  ఆల్ ది బెస్ట్ నా బెస్ట్ ఫ్రెండ్ ❤️
+  </p>
+</div>
+
+<script>
+let count = 0;
+const yesBtn = document.getElementById("yesBtn");
+
+yesBtn.addEventListener("mouseover", () => {
+  count++;
+
+  yesBtn.style.top = Math.random() * 80 + "%";
+  yesBtn.style.left = Math.random() * 80 + "%";
+  yesBtn.style.transform = `scale(${1 + count * 0.3})`;
+
+  if (count >= 3) {
+    nextPage(2);
+  }
+});
+
+function nextPage(pageNumber) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("page" + pageNumber).classList.add("active");
+
+  if(pageNumber === 4){
+    launchConfetti();
+  }
+}
+
+/* Confetti effect */
+function launchConfetti() {
+  for (let i = 0; i < 50; i++) {
+    let confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      ["red", "yellow", "blue", "green", "pink"][Math.floor(Math.random() * 5)];
+    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    document.body.appendChild(confetti);
+  }
+}
+</script>
+
+</body>
+</html>
+```
